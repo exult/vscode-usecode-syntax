@@ -1,0 +1,58 @@
+{
+    "name": "usecode-syntax",
+    "displayName": "Exult Usecode Syntax",
+    "description": "Syntax highlighting for Exult's UseCode C (UCC) files (.ucc/.uc/.uh), UseCode eXTracted files (.ucxt), and UseCode Assembly files (.uca).",
+    "version": "0.1.0",
+    "publisher": "Exult Team",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "usecode",
+                "aliases": [
+                    "UseCode",
+                    "Usecode",
+                    "usecode",
+                    "UCC",
+                    "ucc"
+                ],
+                "extensions": [
+                    ".ucc",
+                    ".uc",
+                    ".ucxt",
+                    ".uh"
+                ],
+                "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "usecode-asm",
+                "aliases": [
+                    "Usecode Assembly",
+                    "usecode-asm",
+                    "uca"
+                ],
+                "extensions": [
+                    ".uca"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "usecode",
+                "scopeName": "source.usecode",
+                "path": "./syntaxes/usecode.tmLanguage.json"
+            },
+            {
+                "language": "usecode-asm",
+                "scopeName": "source.usecode-asm",
+                "path": "./syntaxes/usecode-asm.tmLanguage.json"
+            }
+        ]
+    }
+}

@@ -1,0 +1,143 @@
+{
+    "scopeName": "source.usecode-asm",
+    "name": "Usecode Assembly",
+    "patterns": [
+        { "include": "#comments" },
+        { "include": "#labels" },
+        { "include": "#directives" },
+        { "include": "#mnemonics" },
+        { "include": "#numbers" },
+        { "include": "#strings" },
+        { "include": "#operators" },
+        { "include": "#intrinsics" },
+        { "include": "#specials" },
+        { "include": "#idents" }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                { "name": "comment.line.semicolon.usecode-asm", "match": ";.*$" },
+                { "name": "comment.line.double-slash.usecode-asm", "match": "//.*$" },
+                { "name": "comment.block.usecode-asm", "begin": "/\\*", "end": "\\*/" }
+            ]
+        },
+        "labels": {
+            "patterns": [
+                { "name": "entity.name.label.usecode-asm", "match": "^\\s*([A-Za-z_][A-Za-z0-9_]*):" }
+            ]
+        },
+        "directives": {
+            "patterns": [
+                { "name": "keyword.control.directive.usecode-asm", "match": "^\\s*\\.(?:code|data|funcnumber|ext32|msize|dsize|dbgoffset)\\b" }
+            ]
+        },
+        "mnemonics": {
+            "patterns": [
+                {
+                    "name": "keyword.other.mnemonic.usecode-asm",
+                    "match": "^\\s*(?:loop|startconv|jne|jmp|cmps|add|sub|div|mul|mod|and|or|not|pop|push|cmpgt|cmplt|cmpge|cmple|cmpne|addsi|pushs|arrc|pushi)\\b",
+                    "captures": { "0": { "name": "keyword.other.mnemonic.usecode-asm" } }
+                },
+                {
+                    "name": "keyword.other.mnemonic.usecode-asm",
+                    "match": "^\\s*(?:cmpeq|call|ret|aidx|ret2|retv|initloop|addsv|in|conv_something|retz|say|callis|calli|abrt|endconv|pushf|popf|pushb|setarrayelem)\\b",
+                    "captures": { "0": { "name": "keyword.other.mnemonic.usecode-asm" } }
+                },
+                {
+                    "name": "keyword.other.mnemonic.usecode-asm",
+                    "match": "^\\s*(?:calle|arra|dbgline|dbgfunc|callo|callind|callm|callms|clscreate|classdel|aidxs|setstaticarrayelem|staticloop|aidxclsvar|setclsvararrayelem|clsvarloop|starttry|endtry)\\b",
+                    "captures": { "0": { "name": "keyword.other.mnemonic.usecode-asm" } }
+                },
+                {
+                    "name": "keyword.other.mnemonic.usecode-asm",
+                    "match": "^\\s*(?:loop32|startconv32|jne32|jmp32|cmps32|addsi32|pushs32|pushi32|call32|initloop32|conv_something32|throw|pushfvar|popfvar|calle32|dbgfunc32|callindex|staticloop32|clsvarloop32|starttry32)\\b",
+                    "captures": { "0": { "name": "keyword.other.mnemonic.usecode-asm" } }
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                { "name": "constant.numeric.decimal.usecode-asm", "match": "(?<=@)\\b[0-9]+\\b" },
+                { "name": "constant.numeric.hex.usecode-asm", "match": "(?<!@)\\b(?:0x[0-9A-Fa-f]+|[0-9A-Fa-f]+H?)\\b" }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                { "name": "string.quoted.single.usecode-asm", "begin": "'", "end": "'", "patterns": [ { "name": "constant.character.escape.usecode-asm", "match": "\\\\." } ] },
+                { "name": "string.quoted.double.usecode-asm", "begin": "\"", "end": "\"", "patterns": [ { "name": "constant.character.escape.usecode-asm", "match": "\\\\." } ] }
+            ]
+        },
+
+        "operators": {
+            "patterns": [
+                { "name": "punctuation.separator.usecode-asm", "match": "[,:\\(\\)\\[\\]@\\+\\-\\=\\*/]" }
+            ]
+        },
+        "intrinsics": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:get_random|execute_usecode_array|delayed_execute_usecode_array|show_npc_face|remove_npc_face|show_npc_face0|show_npc_face1|remove_npc_face0|remove_npc_face1|add_answer|remove_answer|push_answers|pop_answers|clear_answers|select_from_menu|select_from_menu2|input_numeric_value|set_item_shape|find_nearest|play_sound_effect|die_roll)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:get_item_shape|get_item_weight|get_item_frame|set_item_frame|get_item_quality|set_item_quality|get_item_quantity|set_item_quantity|get_object_position|get_distance|find_direction|get_npc_object|get_schedule_type|set_schedule_type|add_to_party|remove_from_party|get_npc_prop|set_npc_prop|get_avatar_ref|get_party_list|get_party_list2)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:create_new_object|create_new_object2|set_last_created|update_last_created|get_npc_name|count_objects|find_object|get_cont_items|remove_party_items|add_party_items|add_cont_items|remove_cont_items|get_music_track|play_music)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:npc_nearby|npc_nearby2|find_nearby_avatar|is_npc|display_runes|click_on_item|error_message|find_nearby|give_last_created|is_dead|game_hour|game_minute|get_npc_number|part_of_day|get_alignment|set_alignment)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:move_object|remove_npc|item_say|clear_item_say|set_to_attack|get_lift|set_lift|get_weather|set_weather|sit_down|summon|display_map|si_display_map|kill_npc|roll_to_win|set_attack_mode|get_attack_mode|set_oppressor|get_oppressor|clone|display_area|wizard_eye)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:resurrect|resurrect_npc|add_spell|remove_all_spells|sprite_effect|attack_object|book_mode|book_mode_ex|stop_time|cause_light|get_barge|create_barge_object|earthquake|is_pc_female|armageddon|halt_scheduled|lightning|get_array_size)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:mark_virtue_stone|recall_virtue_stone|apply_damage|is_pc_inside|set_orrery|get_timer|set_timer|wearing_fellowship|mouse_exists|get_speech_track|flash_mouse|get_item_frame_rot|set_item_frame_rot|on_barge|get_container|remove_item|reduce_health|is_readied|restart_game|start_speech|run_endgame|fire_projectile|nap_time|advance_time)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:in_usecode|in_usecode_path|call_guards|obj_sprite_effect|attack_avatar|path_run_usecode|si_path_run_usecode|close_gumps|close_gumps2|close_gump|close_gump2|in_gump_mode|set_light|set_time_palette|is_not_blocked|play_sound_effect2|direction_from|get_item_flag|set_item_flag|clear_item_flag)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:set_path_failure|fade_palette|fade_palette_sleep|in_combat|start_blocking_speech|is_water|reset_conv_face|set_camera|get_dead_party|view_tile|telekenesis|a_or_an|get_item_weight|get_temperature|set_temperature|get_temperature_zone|get_npc_warmth|has_spell|remove_spell|get_skin_colour|change_npc_face0|change_npc_face1)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:set_conversation_slot|set_npc_name|set_usecode_fun|get_usecode_fun|get_map_num|save_pos|teleport_to_saved_pos|set_polymorph|set_intercept_item|printf|remove_from_keyring|is_on_keyring|add_to_keyring|remove_from_area|set_new_schedules|set_opponent|set_barge_dir|modify_schedule|revert_schedule|run_schedule|begin_casting_mode)\\b\\s*(?=@)"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\bUNKNOWN_[0-9A-Fa-f]{2}\\b\\s*(?=@)"
+                },
+                {
+                    "name": "invalid.illegal.intrinsic.usecode",
+                    "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b\\s*(?=@)"
+                }
+            ]
+        },
+        "specials": {
+            "patterns": [
+                { "name": "constant.language.eventid.usecode-asm", "match": "\\beventid\\b" },
+                { "name": "constant.language.itemref.usecode-asm", "match": "\\bitemref\\b" },
+                { "name": "constant.language.static.usecode-asm", "match": "\\bstatic\\b" },
+                { "name": "constant.language.choice.usecode-asm", "match": "\\bchoice\\b" }
+            ]
+        },
+        "idents": {
+            "patterns": [
+                { "name": "variable.other.usecode-asm", "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b" }
+            ]
+        }
+    },
+    "scope": "source.usecode-asm"
+}
