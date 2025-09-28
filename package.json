@@ -3,7 +3,24 @@
     "displayName": "Exult Usecode Syntax",
     "description": "Syntax highlighting for Exult's UseCode C (UCC) files (.ucc/.uc/.uh), UseCode eXTracted files (.ucxt), and UseCode Assembly files (.uca).",
     "version": "0.1.0",
-    "publisher": "Exult Team",
+    "publisher": "Exult",
+    "license": "GPL-2.0-or-later",
+    "icon": "images/icon.png",
+    "keywords": [
+        "usecode",
+        "exult",
+        "ucc",
+        "syntax",
+        "language"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/exult/vscode-usecode-syntax"
+    },
+    "bugs": {
+        "url": "https://github.com/exult/vscode-usecode-syntax/issues"
+    },
+    "homepage": "https://exult.info",
     "engines": {
         "vscode": "^1.60.0"
     },
@@ -15,9 +32,9 @@
             {
                 "id": "usecode",
                 "aliases": [
-                    "UseCode",
-                    "Usecode",
-                    "usecode",
+                    "Usecode C",
+                    "usecode C",
+                    "UseCode C",
                     "UCC",
                     "ucc"
                 ],
@@ -33,6 +50,7 @@
                 "id": "usecode-asm",
                 "aliases": [
                     "Usecode Assembly",
+                    "UseCode Assembly",
                     "usecode-asm",
                     "uca"
                 ],

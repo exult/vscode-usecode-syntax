@@ -1,0 +1,39 @@
+name: Package Extension (Test)
+
+on:
+  # Trigger on pushes to main branch
+  push:
+    branches: [main, master]
+
+  # Trigger on pull requests
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test-package:
+    name: Test Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install vsce
+        run: npm install -g vsce
+
+      - name: Package extension (dry run)
+        run: vsce package --out test-extension.vsix
+
+      - name: List package contents
+        run: vsce ls
+
+      - name: Upload test VSIX
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-extension
+          path: "test-extension.vsix"

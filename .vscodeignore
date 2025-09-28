@@ -1,0 +1,16 @@
+# Files and directories to exclude from the packaged extension
+.vscode/
+.git/
+.gitignore
+.github/
+node_modules/
+*.vsix
+*.log
+.DS_Store
+Thumbs.db
+
+# Development files
+vscode-usecode-syntax.code-workspace
+
+# Test files (uncomment if you don't want samples in the package)
+# samples/
