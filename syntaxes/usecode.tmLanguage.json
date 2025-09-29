@@ -21,6 +21,9 @@
             "include": "#keywords"
         },
         {
+            "include": "#goto-type"
+        },
+        {
             "include": "#script-commands"
         },
         {
@@ -199,7 +202,7 @@
                 },
                 {
                     "name": "keyword.control.flow.usecode",
-                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|break|goto|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
+                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|break|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
                 },
                 {
                     "name": "storage.type.usecode",
@@ -235,7 +238,15 @@
                 },
                 {
                     "name": "keyword.other.usecode",
-                    "match": "\\b(?:after|ticks|static|endconv|attend)\\b"
+                    "match": "\\b(?:after|ticks|static|endconv)\\b"
+                }
+            ]
+        },
+        "goto-type": {
+            "patterns": [
+                {
+                    "name": "keyword.other.goto-type.usecode",
+                    "match": "\\b(?:goto|attend)\\b"
                 }
             ]
         },
