@@ -15,6 +15,9 @@
             "include": "#directives"
         },
         {
+            "include": "#generic-params"
+        },
+        {
             "include": "#keywords"
         },
         {
@@ -264,7 +267,31 @@
                 },
                 {
                     "name": "keyword.operator.usecode",
-                    "match": "(?:!|&|\\-|\\+|<|>|\\*|/|%|=|\\.|,|;|:|\\(|\\)|\\[|\\]|\\{|\\}|@)"
+                    "match": "(?:!|&|\\-|\\+|\\*|/|%|=|\\.|,|;|:|@)"
+                },
+                {
+                    "name": "punctuation.section.parens.begin.bracket.round.usecode",
+                    "match": "\\("
+                },
+                {
+                    "name": "punctuation.section.parens.end.bracket.round.usecode",
+                    "match": "\\)"
+                },
+                {
+                    "name": "punctuation.section.block.begin.bracket.square.usecode",
+                    "match": "\\["
+                },
+                {
+                    "name": "punctuation.section.block.end.bracket.square.usecode",
+                    "match": "\\]"
+                },
+                {
+                    "name": "punctuation.section.block.begin.bracket.curly.usecode",
+                    "match": "\\{"
+                },
+                {
+                    "name": "punctuation.section.block.end.bracket.curly.usecode",
+                    "match": "\\}"
                 },
                 {
                     "name": "keyword.operator.usecode",
@@ -322,6 +349,25 @@
                     "name": "invalid.illegal.intrinsic.usecode",
                     "match": "\\bUI_[A-Za-z_][A-Za-z0-9_]*\\b"
                 }
+            ]
+        },
+        "generic-params": {
+            "name": "meta.generic-parameters.usecode",
+            "begin": "(\\b(?:class|struct)\\b)(\\s*)(<)",
+            "beginCaptures": {
+                "1": { "name": "storage.type.usecode" },
+                "3": { "name": "punctuation.section.angle-brackets.begin.template.definition.usecode" }
+            },
+            "end": ">",
+            "endCaptures": {
+                "0": { "name": "punctuation.section.angle-brackets.end.template.definition.usecode" }
+            },
+            "patterns": [
+                {
+                    "name": "entity.name.type.generic.usecode",
+                    "match": "\\s*([A-Za-z_][A-Za-z0-9_]*)\\s*"
+                },
+                { "include": "#comments" }
             ]
         },
         "idents": {
