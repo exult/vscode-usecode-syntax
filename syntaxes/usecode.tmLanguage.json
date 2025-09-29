@@ -294,8 +294,11 @@
         "operators": {
             "patterns": [
                 {
-                    "name": "keyword.operator.usecode",
-                    "match": "\\b(?:object#|id#|shape#)(?=\\()"
+                    "match": "\\b(object|id|shape)(#)(?=\\s*\\()",
+                    "captures": {
+                        "1": { "name": "keyword.operator.usecode" },
+                        "2": { "name": "punctuation.section.parens" }
+                    }
                 },
                 {
                     "name": "keyword.operator.usecode",
