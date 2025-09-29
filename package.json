@@ -2,7 +2,7 @@
     "name": "usecode-syntax",
     "displayName": "Exult Usecode Syntax",
     "description": "Syntax highlighting for Exult's UseCode C (UCC) files (.ucc/.uc/.uh), UseCode eXTracted files (.ucxt), and UseCode Assembly files (.uca).",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "Exult",
     "license": "GPL-2.0-or-later",
     "icon": "images/icon.png",
