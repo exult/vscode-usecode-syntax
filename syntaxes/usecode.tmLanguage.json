@@ -192,7 +192,7 @@
                 },
                 {
                     "name": "keyword.control.flow.usecode",
-                    "match": "\\b(?:if|else|return|do|while|for|switch|converse|case|break|goto|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
+                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|break|goto|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
                 },
                 {
                     "name": "storage.type.usecode",
