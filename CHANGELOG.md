@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.2] - 2025-09-29
+
+### Fixed
+
+- Missing nobreak control flow keyword
+- Fixing language configuration, which must be a single json array
+- Improved highlighting of class/struct names in declarations
+
 ## [0.1.1] - 2025-09-29
 
 ### Fixed
