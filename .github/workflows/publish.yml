@@ -54,6 +54,11 @@ jobs:
       - name: Install vsce
         run: npm install -g vsce
 
+      - name: Package extension for release
+        run: |
+          mkdir -p release
+          vsce package --out release/vscode-usecode-syntax.vsix
+
       - name: Publish to VS Code Marketplace
         env:
           VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
@@ -62,7 +67,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: "*.vsix"
+          files: 'release/vscode-usecode-syntax.vsix'
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
