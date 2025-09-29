@@ -2,9 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2025-09-29
+
+### Changed (0.1.3)
+
+- Split `goto` and `attend` into a dedicated "goto-type" group so they are highlighted separately from other control-flow keywords.
+- Added label highlighting for label declarations and `goto`/`attend` label parameters (identifiers before `:` and after `goto`/`attend`).
+- Improved operator handling for `object#`, `id#`, and `shape#` so `#` is consistently highlighted; added a ligature workaround so `#(` doesn't cause color flicker when fonts form ligatures.
+
+### Notes (0.1.3)
+
+- Adjusted grammar ordering and captures to avoid inconsistent tokenization caused by spacing-sensitive matches.
+
 ## [0.1.2] - 2025-09-29
 
-### Fixed
+### Fixed (0.1.2)
 
 - Missing nobreak control flow keyword
 - Fixing language configuration, which must be a single json array
@@ -12,7 +24,7 @@ All notable changes to this project will be documented in this file.
 
 ## [0.1.1] - 2025-09-29
 
-### Fixed
+### Fixed (0.1.1)
 
 - Fixed GitHub Release attachment workflow so the generated `.vsix` is attached to releases (publish job now generates `release/vscode-usecode-syntax.vsix`).
 
