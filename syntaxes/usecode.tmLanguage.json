@@ -194,8 +194,12 @@
                     "match": "\\bevent\\b"
                 },
                 {
+                    "name": "keyword.other.user_choice.usecode",
+                    "match": "\\buser_choice\\b"
+                },
+                {
                     "name": "keyword.control.flow.usecode",
-                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|break|goto|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
+                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|break|goto|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
                 },
                 {
                     "name": "storage.type.usecode",
@@ -227,11 +231,11 @@
                 },
                 {
                     "name": "keyword.function-like.usecode",
-                    "match": "\\b(?:message|response|original|hide|remove|add|script|runscript|user_choice)\\b"
+                    "match": "\\b(?:message|response|original|hide|remove|add|script|runscript)\\b"
                 },
                 {
                     "name": "keyword.other.usecode",
-                    "match": "\\b(?:after|ticks|static|endconv|attend|always)\\b"
+                    "match": "\\b(?:after|ticks|static|endconv|attend)\\b"
                 }
             ]
         },
