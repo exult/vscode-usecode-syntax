@@ -306,7 +306,7 @@
                 },
                 {
                     "name": "keyword.operator.usecode",
-                    "match": "(?:!|&|\\-|\\+|\\*|/|%|=|\\.|,|;|:|@)"
+                    "match": "(?:!|&|\\-|\\+|\\*|/|%|=|\\.|,|;|:|@|<|>)"
                 },
                 {
                     "name": "punctuation.section.parens.begin.bracket.round.usecode",

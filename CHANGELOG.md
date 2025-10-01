@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.4] - 2025-10-01
+
+### Changed (0.1.4)
+
+- Fixed missing highlight for `<` and `>` relational operators.
+
 ## [0.1.3] - 2025-09-29
 
 ### Changed (0.1.3)
