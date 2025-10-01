@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.5] - 2025-10-01
+
+### Changed (0.1.5)
+
+- Auto-close comment blocks
+
 ## [0.1.4] - 2025-10-01
 
 ### Changed (0.1.4)
