@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.6] - 2025-10-06
+
+### Changed (0.1.6)
+
+- Adding labelled `break`/`continue`
+- Making `continue` highlight as a keyword
+- Not highlighting `always` and `default` as labels
+
 ## [0.1.5] - 2025-10-01
 
 ### Changed (0.1.5)
