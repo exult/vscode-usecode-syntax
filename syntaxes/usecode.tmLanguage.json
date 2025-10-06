@@ -204,8 +204,15 @@
                     "match": "\\buser_choice\\b"
                 },
                 {
+                    "match": "(\\b(?:break|continue)\\b)(?:\\s+([A-Za-z_][A-Za-z0-9_]*))?",
+                    "captures": {
+                        "1": { "name": "keyword.control.flow.usecode" },
+                        "2": { "name": "entity.name.label.usecode" }
+                    }
+                },
+                {
                     "name": "keyword.control.flow.usecode",
-                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|break|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
+                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
                 },
                 {
                     "name": "storage.type.usecode",
