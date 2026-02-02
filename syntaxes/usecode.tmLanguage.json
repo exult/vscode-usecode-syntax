@@ -385,7 +385,7 @@
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:set_conversation_slot|set_npc_name|set_usecode_fun|get_usecode_fun|get_map_num|save_pos|teleport_to_saved_pos|set_polymorph|set_intercept_item|printf|remove_from_keyring|is_on_keyring|add_to_keyring|remove_from_area|set_new_schedules|set_opponent|set_barge_dir|modify_schedule|revert_schedule|run_schedule|begin_casting_mode)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:set_conversation_slot|set_npc_name|set_usecode_fun|get_usecode_fun|get_map_num|save_pos|teleport_to_saved_pos|set_polymorph|set_intercept_item|printf|remove_from_keyring|is_on_keyring|add_to_keyring|remove_from_area|set_new_schedules|set_opponent|set_barge_dir|modify_schedule|revert_schedule|run_schedule|begin_casting_mode|init_conversation|end_conversation)\\b(?=\\s*\\()"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
