@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.6] - 2025-10-06
+## [0.1.6] - 2026-02-04
+
+### Changed (0.1.7)
+
+- Add missing `init_conversation` and `end_conversation` intrinsics
 
 ### Changed (0.1.6)
 
