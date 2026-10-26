@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed (0.1.7)
 
 - Add missing `init_conversation` and `end_conversation` intrinsics
+- Highlight portrait-slot forms of `say`, `show`, and `hide`, and the `assume_script` compiler hint
 
 ### Changed (0.1.6)
 

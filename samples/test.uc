@@ -619,3 +619,20 @@ void test_strictbraces_edge_cases(var input) {
 		}
 	}
 }
+
+void test_portrait_slots(var npc) {
+	const int RIGHT_SLOT = 1;
+	npc.show();
+	npc.show@0(0);
+	npc->show @ RIGHT_SLOT(0);
+	npc.say@0("Left portrait.");
+	npc->say @ RIGHT_SLOT("Right portrait.");
+	npc.hide();
+	hide@0();
+	hide @ RIGHT_SLOT();
+}
+
+void test_assume_script(var commands) {
+	assume_script(commands, 2);
+	item->runscript(commands);
+}

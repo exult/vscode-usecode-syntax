@@ -236,7 +236,7 @@
                 },
                 {
                     "name": "keyword.function-like.usecode",
-                    "match": "\\bsay\\b(?=\\s*\\()"
+                    "match": "\\bsay\\b(?=\\s*[(@])"
                 },
                 {
                     "name": "keyword.script.usecode",
@@ -244,7 +244,7 @@
                 },
                 {
                     "name": "keyword.function-like.usecode",
-                    "match": "\\b(?:message|response|original|hide|remove|add|script|runscript)\\b"
+                    "match": "\\b(?:message|response|original|show|hide|remove|add|script|runscript|assume_script)\\b"
                 },
                 {
                     "name": "keyword.other.usecode",
