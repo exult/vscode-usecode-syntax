@@ -3,6 +3,7 @@
 
 # Node.js dependencies (if added later)
 node_modules/
+.npm-cache/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

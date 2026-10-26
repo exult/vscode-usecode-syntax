@@ -2,12 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.6] - 2026-02-04
+## [0.1.8] - 2026-10-26
+
+### Changed (0.1.8)
+
+- Highlight portrait-slot forms of `say`, `show`, and `hide`, and the `assume_script` compiler hint
+- Update packaging dependencies and GitHub Actions, validate release tags, and publish the packaged VSIX artifact
+
+## [0.1.7]
 
 ### Changed (0.1.7)
 
 - Add missing `init_conversation` and `end_conversation` intrinsics
-- Highlight portrait-slot forms of `say`, `show`, and `hide`, and the `assume_script` compiler hint
+
+## [0.1.6] - 2026-02-04
 
 ### Changed (0.1.6)
 

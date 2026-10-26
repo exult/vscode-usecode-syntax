@@ -4,6 +4,8 @@
 .gitignore
 .github/
 node_modules/
+package-lock.json
+.npm-cache/
 *.vsix
 *.log
 .DS_Store

@@ -20,16 +20,16 @@ This extension provides TextMate-based grammars for UseCode source files (extens
 
 Install from the Marketplace once published, or test locally:
 
-1. Install dependencies (for packaging):
+1. Install dependencies (for packaging, requires Node.js 24 or newer):
 
 ```bash
-npm install -g vsce
+npm ci
 ```
 
 1. Package locally:
 
 ```bash
-vsce package
+npm run package
 ```
 
 1. Install the produced `.vsix` in VS Code: open Command Palette -> "Extensions: Install from VSIX..."

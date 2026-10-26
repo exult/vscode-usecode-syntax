@@ -2,7 +2,7 @@
     "name": "usecode-syntax",
     "displayName": "Exult Usecode Syntax",
     "description": "Syntax highlighting for Exult's UseCode C (UCC) files (.ucc/.uc/.uh), UseCode eXTracted files (.ucxt), and UseCode Assembly files (.uca).",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "publisher": "Exult",
     "license": "GPL-2.0-or-later",
     "icon": "images/icon.png",
@@ -23,6 +23,10 @@
     "homepage": "https://exult.info",
     "engines": {
         "vscode": "^1.60.0"
+    },
+    "scripts": {
+        "package": "vsce package",
+        "package:list": "vsce ls"
     },
     "categories": [
         "Programming Languages"
@@ -77,5 +81,8 @@
                 "path": "./syntaxes/usecode-asm.tmLanguage.json"
             }
         ]
+    },
+    "devDependencies": {
+        "@vscode/vsce": "4.0.0"
     }
 }

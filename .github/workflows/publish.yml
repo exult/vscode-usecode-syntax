@@ -9,6 +9,9 @@ on:
   # Allow manual trigger from GitHub UI
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   package:
     name: Package Extension
@@ -16,24 +19,31 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "24"
+          cache: npm
 
-      - name: Install vsce
-        run: npm install -g vsce
+      - name: Validate release tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          node -e 'const expected = "v" + require("./package.json").version; if (process.env.GITHUB_REF_NAME !== expected) { console.error(`Expected tag ${expected}, got ${process.env.GITHUB_REF_NAME}`); process.exit(1); }'
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Package extension
-        run: vsce package
+        run: npm run package -- --out vscode-usecode-syntax.vsix
 
       - name: Upload VSIX artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vscode-extension
-          path: "*.vsix"
+          path: vscode-usecode-syntax.vsix
+          if-no-files-found: error
 
   publish:
     name: Publish to Marketplace
@@ -41,33 +51,38 @@ jobs:
     needs: package
     # Only publish on tag pushes (not manual triggers)
     if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "24"
+          cache: npm
 
-      - name: Install vsce
-        run: npm install -g vsce
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Package extension for release
-        run: |
-          mkdir -p release
-          vsce package --out release/vscode-usecode-syntax.vsix
+      - name: Download packaged extension
+        uses: actions/download-artifact@v8
+        with:
+          name: vscode-extension
+          path: release
 
       - name: Publish to VS Code Marketplace
         env:
-          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
-        run: vsce publish --pat "$VSCE_TOKEN"
+          VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
+        run: npx --no-install vsce publish --packagePath release/vscode-usecode-syntax.vsix
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           files: 'release/vscode-usecode-syntax.vsix'
           generate_release_notes: true
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
