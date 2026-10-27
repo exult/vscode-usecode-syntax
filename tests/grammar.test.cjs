@@ -76,3 +76,28 @@ test('all engine table names are covered', { skip: !process.env.EXULT_ROOT }, ()
         }
     }
 });
+
+test('compiler keywords do not depend on following whitespace', () => {
+    for (const word of ['with', 'to', 'minutes', 'hours']) {
+        scopeAt(tokenize(`${word}/* comment */`), 0, word, 'keyword.other.usecode');
+    }
+    for (const word of ['new', 'delete']) scopeAt(tokenize(`${word}(value)`), 0, word, 'keyword.operator.usecode');
+    for (const word of ['class', 'struct', 'enum', 'nested']) {
+        scopeAt(tokenize(`${word}/* comment */`), 0, word, 'storage.type.declaration.usecode');
+    }
+    for (const source of ['run_script([]);', 'run_script\n([]);', 'say/* comment */("text");', 'say\n("text");']) {
+        scopeAt(tokenize(source), 0, source.startsWith('say') ? 'say' : 'run_script', 'keyword.function-like.usecode');
+    }
+    scopeAt(tokenize('enum();'), 0, 'enum', 'storage.type.declaration.usecode');
+    scopeAt(tokenize('runscript();'), 0, 'runscript', 'entity.name.function.usecode');
+});
+
+test('only the contiguous .original suffix is special', () => {
+    const lines = tokenize('foo.original();\nfoo.original\n();\noriginal();\nfoo. original();\nfoo.originally();');
+    scopeAt(lines, 0, '.', 'keyword.operator.usecode');
+    scopeAt(lines, 0, 'original', 'keyword.function-like.usecode');
+    scopeAt(lines, 1, 'original', 'keyword.function-like.usecode');
+    scopeAt(lines, 3, 'original', 'entity.name.function.usecode');
+    scopeAt(lines, 4, 'original', 'entity.name.function.usecode');
+    scopeAt(lines, 5, 'originally', 'entity.name.function.usecode');
+});
