@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.9] - 2026-10-27
+
+### Fixed (0.1.9)
+
+- Align intrinsic names with all three engine tables, preserve highlighting across comments and line breaks, and accept numeric intrinsic names through `0xFFFF` with leading zeroes
+- Mark `UI_UNKNOWN`, `UNKNOWN`, and unrecognized reserved `UI_` names as illegal
+- Add missing compiler keywords, correct `run_script`, and recognize `.original` without treating bare `original` as a keyword
+- Scope script commands and conversation keywords by context, including constructed and appended scripts, with documented limitations for complex unbraced loop bodies
+- Preserve punctuation around labels and support comments and line breaks in label references
+- Recognize spaced and inline directives, numeric line markers, and decimal, octal, and hexadecimal autonumber values
+- Accept uppercase hexadecimal prefixes and highlight malformed integer literals as complete invalid tokens
+
+### Added (0.1.9)
+
+- TextMate and Oniguruma regression tests, with optional intrinsic coverage checks against an Exult checkout
+
 ## [0.1.8] - 2026-10-26
 
 ### Changed (0.1.8)
