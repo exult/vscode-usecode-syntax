@@ -44,11 +44,12 @@ Or run the extension in the Extension Development Host via the Debug view.
 
 Use **Format Document** in a UseCode C file to format braces, indentation, operators, labels, conversations, scripts, and long calls. The formatter respects the editor's tabs/spaces and tab size settings, preserves existing LF or CRLF line endings, and defaults to a preferred line width of 100 (`usecode.format.maxLineLength`, minimum 40). Strings and comments remain intact, and atomic tokens can exceed the preferred width. Files with unterminated literals or unbalanced delimiters are left unchanged; details appear in the **Usecode Formatter** output channel.
 
-To select this formatter and enable formatting on save, add these settings:
+This extension is selected as the default formatter for all UseCode C file extensions. Language-specific user or workspace settings can override this default. UseCode Assembly files have highlighting only.
+
+To enable formatting on save, add these settings:
 
 ```json
 "[usecode]": {
-    "editor.defaultFormatter": "Exult.usecode-syntax",
     "editor.formatOnSave": true
 }
 ```

@@ -2,7 +2,7 @@
     "name": "usecode-syntax",
     "displayName": "Exult Usecode Syntax",
     "description": "Syntax highlighting and formatting for Exult's UseCode C (UCC), with highlighting for UseCode eXTracted and UseCode Assembly files.",
-    "version": "0.1.10",
+    "version": "0.1.11",
     "publisher": "Exult",
     "license": "GPL-2.0-or-later",
     "icon": "images/icon.png",
@@ -40,6 +40,11 @@
         "Formatters"
     ],
     "contributes": {
+        "configurationDefaults": {
+            "[usecode]": {
+                "editor.defaultFormatter": "Exult.usecode-syntax"
+            }
+        },
         "configuration": {
             "title": "Usecode",
             "properties": {

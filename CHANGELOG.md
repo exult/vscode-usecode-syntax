@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.11] - 2026-10-27
+
+### Changed (0.1.11)
+
+- Select the extension as the default formatter for all UseCode C file extensions, while allowing language-specific user and workspace overrides
+
 ## [0.1.10] - 2026-10-27
 
 ### Added (0.1.10)
