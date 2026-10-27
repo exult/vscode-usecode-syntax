@@ -1,48 +1,407 @@
 {
     "scopeName": "source.usecode",
     "name": "Usecode",
-    "patterns": [
-        {
-            "include": "#comments"
-        },
-        {
-            "include": "#strings"
-        },
-        {
-            "include": "#numbers"
-        },
-        {
-            "include": "#directives"
-        },
-        {
-            "include": "#generic-params"
-        },
-        {
-            "include": "#labels"
-        },
-        {
-            "include": "#keywords"
-        },
-        {
-            "include": "#goto-type"
-        },
-        {
-            "include": "#script-commands"
-        },
-        {
-            "include": "#types"
-        },
-        {
-            "include": "#operators"
-        },
-        {
-            "include": "#intrinsics"
-        },
-        {
-            "include": "#idents"
-        }
-    ],
+    "patterns": [{ "include": "#normal-code" }],
     "repository": {
+        "contexts": {
+            "patterns": [
+                {
+                    "include": "#script-context"
+                },
+                {
+                    "include": "#append-context"
+                },
+                {
+                    "include": "#conversation-context"
+                }
+            ]
+        },
+        "common-code": {
+            "patterns": [
+                {
+                    "include": "#comments"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#numbers"
+                },
+                {
+                    "include": "#directives"
+                },
+                {
+                    "include": "#generic-params"
+                },
+                {
+                    "include": "#labels"
+                },
+                {
+                    "include": "#keywords"
+                },
+                {
+                    "include": "#goto-type"
+                },
+                {
+                    "include": "#types"
+                },
+                {
+                    "include": "#operators"
+                },
+                {
+                    "include": "#intrinsics"
+                },
+                {
+                    "include": "#idents"
+                }
+            ]
+        },
+        "normal-code": {
+            "patterns": [
+                {
+                    "include": "#contexts"
+                },
+                {
+                    "include": "#normal-block"
+                },
+                {
+                    "include": "#normal-parens"
+                },
+                {
+                    "include": "#normal-brackets"
+                },
+                {
+                    "include": "#common-code"
+                }
+            ]
+        },
+        "normal-block": {
+            "begin": "\\{",
+            "end": "\\}",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.begin.bracket.curly.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.end.bracket.curly.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#normal-code"
+                }
+            ]
+        },
+        "normal-parens": {
+            "begin": "\\(",
+            "end": "\\)",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.parens.begin.bracket.round.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.parens.end.bracket.round.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#normal-code"
+                }
+            ]
+        },
+        "normal-brackets": {
+            "begin": "\\[",
+            "end": "\\]",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.begin.bracket.square.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.end.bracket.square.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#normal-code"
+                }
+            ]
+        },
+        "script-code": {
+            "patterns": [
+                {
+                    "include": "#contexts"
+                },
+                {
+                    "include": "#script-commands"
+                },
+                {
+                    "include": "#script-block"
+                },
+                {
+                    "include": "#script-parens"
+                },
+                {
+                    "include": "#script-brackets"
+                },
+                {
+                    "include": "#common-code"
+                }
+            ]
+        },
+        "script-block": {
+            "begin": "\\{",
+            "end": "\\}",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.begin.bracket.curly.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.end.bracket.curly.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#script-code"
+                }
+            ]
+        },
+        "script-parens": {
+            "begin": "\\(",
+            "end": "\\)",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.parens.begin.bracket.round.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.parens.end.bracket.round.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#script-code"
+                }
+            ]
+        },
+        "script-brackets": {
+            "begin": "\\[",
+            "end": "\\]",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.begin.bracket.square.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.end.bracket.square.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#script-code"
+                }
+            ]
+        },
+        "conversation-code": {
+            "patterns": [
+                {
+                    "include": "#contexts"
+                },
+                {
+                    "include": "#conversation-loop"
+                },
+                {
+                    "include": "#conversation-keywords"
+                },
+                {
+                    "include": "#conversation-block"
+                },
+                {
+                    "include": "#conversation-parens"
+                },
+                {
+                    "include": "#conversation-brackets"
+                },
+                {
+                    "include": "#common-code"
+                }
+            ]
+        },
+        "conversation-block": {
+            "begin": "\\{",
+            "end": "\\}",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.begin.bracket.curly.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.end.bracket.curly.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#conversation-code"
+                }
+            ]
+        },
+        "conversation-parens": {
+            "begin": "\\(",
+            "end": "\\)",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.parens.begin.bracket.round.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.parens.end.bracket.round.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#conversation-code"
+                }
+            ]
+        },
+        "conversation-brackets": {
+            "begin": "\\[",
+            "end": "\\]",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.begin.bracket.square.usecode"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.end.bracket.square.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#conversation-code"
+                }
+            ]
+        },
+        "script-context": {
+            "name": "meta.script.usecode",
+            "begin": "\\bscript\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.function-like.usecode"
+                }
+            },
+            "end": ";|(?<=\\})",
+            "endCaptures": {
+                "0": {
+                    "name": "keyword.operator.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#script-code"
+                }
+            ],
+            "$comment": "Script mode starts immediately after script, including the receiver and delay. Balanced groups shield command terminators."
+        },
+        "append-context": {
+            "name": "meta.append.usecode",
+            "begin": "<<",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.operator.usecode"
+                }
+            },
+            "end": "(?=;)|(?<=\\})",
+            "patterns": [
+                {
+                    "include": "#script-block"
+                },
+                {
+                    "include": "#contexts"
+                },
+                {
+                    "include": "#normal-parens"
+                },
+                {
+                    "include": "#normal-brackets"
+                },
+                {
+                    "include": "#common-code"
+                }
+            ]
+        },
+        "conversation-context": {
+            "name": "meta.conversation.usecode",
+            "begin": "\\bconverse\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.flow.usecode"
+                }
+            },
+            "end": ";|(?<=\\})",
+            "endCaptures": {
+                "0": {
+                    "name": "keyword.operator.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#conversation-block"
+                },
+                {
+                    "include": "#contexts"
+                },
+                {
+                    "include": "#normal-parens"
+                },
+                {
+                    "include": "#normal-brackets"
+                },
+                {
+                    "include": "#common-code"
+                }
+            ]
+        },
+        "conversation-keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.flow.usecode",
+                    "match": "\\bfallthrough\\b"
+                }
+            ]
+        },
+        "conversation-loop": {
+            "name": "meta.loop.usecode",
+            "begin": "\\b(?:while|for|do|forever|breakable|switch)\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.flow.usecode"
+                }
+            },
+            "end": ";|(?<=\\})",
+            "endCaptures": {
+                "0": {
+                    "name": "keyword.operator.usecode"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#normal-code"
+                }
+            ],
+            "$comment": "Loop and switch bodies temporarily replace the conversation lexer state. Compound unbraced bodies are approximate; braces give reliable boundaries."
+        },
         "comments": {
             "patterns": [
                 {
@@ -297,7 +656,7 @@
                 },
                 {
                     "name": "keyword.control.flow.usecode",
-                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|default|fallthrough|try|catch|throw|abort|forever|breakable|break|continue)\\b"
+                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|default|try|catch|throw|abort|forever|breakable|break|continue)\\b"
                 },
                 {
                     "name": "storage.type.usecode",
@@ -378,7 +737,7 @@
             "patterns": [
                 {
                     "name": "keyword.script.usecode",
-                    "match": "\\b(?:raw|nop|nop2|nohalt|next|finish|resurrect|reset|repeat|wait|rise|descent|frame|hatch|setegg|previous|cycle|step|music|call|speech|sfx|face|weather|hit|attack|actor)\\b"
+                    "match": "\\b(?:say|remove|continue|raw|nop|nop2|nohalt|next|finish|resurrect|reset|repeat|wait|rise|descent|frame|hatch|setegg|previous|cycle|step|music|call|speech|sfx|face|weather|hit|attack|actor)\\b"
                 },
                 {
                     "name": "constant.language.value.usecode",

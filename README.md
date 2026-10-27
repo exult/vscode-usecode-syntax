@@ -67,6 +67,8 @@ Contributions are welcome. Please open an issue or pull request on the repositor
 
 Run `npm test` to check highlighting with VS Code's TextMate and Oniguruma engines. Set `EXULT_ROOT` to an Exult checkout to also check intrinsic coverage against all three engine tables.
 
+Script words are scoped inside scheduled scripts, `new script` expressions, and script blocks appended with `<<`. Conversation blocks scope `fallthrough`, with ordinary identifier scopes restored inside loop and switch bodies. These TextMate contexts use balanced delimiters; complex unbraced loop bodies (such as an `if`/`else` body) and the exact transition between a loop header and its body remain approximations of the compiler's parser. Intrinsic names are highlighted independently of following call punctuation so comments and line breaks do not change their scopes; bare intrinsic names shadowed by user declarations retain intrinsic highlighting.
+
 ## Contact and repository
 
 Please add repository information in `package.json` (repository, bugs, homepage) so the Marketplace page links to the source. Replace placeholders with your repository URL before publishing.
