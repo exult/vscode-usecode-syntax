@@ -86,102 +86,183 @@
             "patterns": [
                 {
                     "name": "constant.numeric.hex.usecode",
-                    "match": "0x[0-9A-Fa-f]+"
+                    "match": "\\b0[xX][0-9A-Fa-f]+\\b"
                 },
                 {
                     "name": "constant.numeric.integer.usecode",
                     "match": "\\b[0-9]+\\b"
+                },
+                {
+                    "name": "invalid.illegal.numeric.usecode",
+                    "match": "\\b[0-9][A-Za-z0-9_]*\\b"
                 }
             ]
         },
         "directives": {
             "patterns": [
                 {
-                    "match": "^(\\s*#include)\\s+(\"[^\"]*\")(?:\\s*(//.*))?$",
-                    "captures": {
-                        "1": {
+                    "name": "meta.directive.usecode",
+                    "begin": "#\\s*(?:include|game)(?=\\s|$)",
+                    "beginCaptures": {
+                        "0": {
                             "name": "keyword.control.directive.usecode"
-                        },
-                        "2": {
-                            "name": "string.quoted.double.usecode"
-                        },
-                        "3": {
-                            "name": "comment.line.double-slash.usecode"
                         }
-                    }
+                    },
+                    "end": "$",
+                    "patterns": [
+                        {
+                            "name": "comment.line.double-slash.usecode",
+                            "match": "//.*$"
+                        },
+                        {
+                            "name": "comment.block.usecode",
+                            "match": "/\\*.*?(?:\\*/|$)"
+                        },
+                        {
+                            "name": "string.quoted.double.usecode",
+                            "match": "\"[^\"]*\""
+                        }
+                    ]
                 },
                 {
-                    "match": "^(\\s*#game)\\s+(\"[^\"]*\")(?:\\s*(//.*))?$",
-                    "captures": {
-                        "1": {
+                    "name": "meta.directive.usecode",
+                    "begin": "#\\s*line(?=\\s|$)",
+                    "beginCaptures": {
+                        "0": {
                             "name": "keyword.control.directive.usecode"
-                        },
-                        "2": {
-                            "name": "string.quoted.double.usecode"
-                        },
-                        "3": {
-                            "name": "comment.line.double-slash.usecode"
                         }
-                    }
+                    },
+                    "end": "$",
+                    "patterns": [
+                        {
+                            "name": "comment.line.double-slash.usecode",
+                            "match": "//.*$"
+                        },
+                        {
+                            "name": "comment.block.usecode",
+                            "match": "/\\*.*?(?:\\*/|$)"
+                        },
+                        {
+                            "name": "constant.numeric.integer.usecode",
+                            "match": "[0-9]+"
+                        },
+                        {
+                            "name": "string.quoted.double.usecode",
+                            "match": "\"[^\"]*\""
+                        }
+                    ]
                 },
                 {
-                    "match": "^(\\s*#line)\\s+([0-9]+)\\s+(\"[^\"]*\")(?:\\s*(//.*))?$",
-                    "captures": {
-                        "1": {
+                    "name": "meta.directive.usecode",
+                    "begin": "#\\s*(?=[0-9])",
+                    "beginCaptures": {
+                        "0": {
                             "name": "keyword.control.directive.usecode"
-                        },
-                        "2": {
-                            "name": "constant.numeric.integer.usecode"
-                        },
-                        "3": {
-                            "name": "string.quoted.double.usecode"
-                        },
-                        "4": {
-                            "name": "comment.line.double-slash.usecode"
                         }
-                    }
+                    },
+                    "end": "$",
+                    "patterns": [
+                        {
+                            "name": "comment.line.double-slash.usecode",
+                            "match": "//.*$"
+                        },
+                        {
+                            "name": "comment.block.usecode",
+                            "match": "/\\*.*?(?:\\*/|$)"
+                        },
+                        {
+                            "name": "constant.numeric.integer.usecode",
+                            "match": "[0-9]+"
+                        },
+                        {
+                            "name": "string.quoted.double.usecode",
+                            "match": "\"[^\"]*\""
+                        }
+                    ]
                 },
                 {
-                    "match": "^(\\s*#autonumber)\\s+(0x[0-9A-Fa-f]+|[0-9]+)(?:\\s*(//.*))?$",
-                    "captures": {
-                        "1": {
+                    "name": "meta.directive.usecode",
+                    "begin": "#\\s*autonumber(?=\\s|$)",
+                    "beginCaptures": {
+                        "0": {
                             "name": "keyword.control.directive.usecode"
-                        },
-                        "2": {
-                            "name": "constant.numeric.hex.usecode"
-                        },
-                        "3": {
-                            "name": "comment.line.double-slash.usecode"
                         }
-                    }
+                    },
+                    "end": "$",
+                    "patterns": [
+                        {
+                            "name": "comment.line.double-slash.usecode",
+                            "match": "//.*$"
+                        },
+                        {
+                            "name": "comment.block.usecode",
+                            "match": "/\\*.*?(?:\\*/|$)"
+                        },
+                        {
+                            "name": "constant.numeric.hex.usecode",
+                            "match": "\\b0[xX][0-9A-Fa-f]+\\b"
+                        },
+                        {
+                            "name": "constant.numeric.octal.usecode",
+                            "match": "\\b0[0-7]+\\b"
+                        },
+                        {
+                            "name": "invalid.illegal.numeric.usecode",
+                            "match": "\\b0[0-9]+\\b"
+                        },
+                        {
+                            "include": "#numbers"
+                        }
+                    ]
                 },
                 {
-                    "match": "^(\\s*#strictbraces)\\s+(\"(?:true|false)\")(?:\\s*(//.*))?$",
-                    "captures": {
-                        "1": {
+                    "name": "meta.directive.usecode",
+                    "begin": "#\\s*strictbraces(?=\\s|$)",
+                    "beginCaptures": {
+                        "0": {
                             "name": "keyword.control.directive.usecode"
-                        },
-                        "2": {
-                            "name": "constant.language.boolean.usecode"
-                        },
-                        "3": {
-                            "name": "comment.line.double-slash.usecode"
                         }
-                    }
+                    },
+                    "end": "$",
+                    "patterns": [
+                        {
+                            "name": "comment.line.double-slash.usecode",
+                            "match": "//.*$"
+                        },
+                        {
+                            "name": "comment.block.usecode",
+                            "match": "/\\*.*?(?:\\*/|$)"
+                        },
+                        {
+                            "name": "constant.language.boolean.usecode",
+                            "match": "\"(?:true|false)\""
+                        },
+                        {
+                            "name": "string.quoted.double.usecode",
+                            "match": "\"[^\"]*\""
+                        }
+                    ]
                 },
                 {
-                    "match": "^(\\s*#\\w+)(?:\\s+(.*?))?(?:\\s*(//.*))?$",
-                    "captures": {
-                        "1": {
+                    "name": "meta.directive.usecode",
+                    "begin": "#\\s*[^\\s]*",
+                    "beginCaptures": {
+                        "0": {
                             "name": "keyword.control.directive.usecode"
-                        },
-                        "2": {
-                            "name": "string.untyped.directive-args.usecode"
-                        },
-                        "3": {
-                            "name": "comment.line.double-slash.usecode"
                         }
-                    }
+                    },
+                    "end": "$",
+                    "patterns": [
+                        {
+                            "name": "comment.line.double-slash.usecode",
+                            "match": "//.*$"
+                        },
+                        {
+                            "name": "comment.block.usecode",
+                            "match": "/\\*.*?(?:\\*/|$)"
+                        }
+                    ],
+                    "contentName": "string.untyped.directive-args.usecode"
                 }
             ]
         },

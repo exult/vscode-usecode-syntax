@@ -127,3 +127,41 @@ test('label references tolerate comments and line breaks', () => {
     scopeAt(lines, 0, ';', 'keyword.operator.usecode');
     scopeAt(lines, 0, 'value', 'variable.other.usecode');
 });
+
+test('directives support whitespace, numeric line markers, and inline placement', () => {
+    const lines = tokenize('# game "serpentbeta"\n# 42 "file.uc"\nvar x = 1; #\tline 23 "file.uc"\n# include "path/file.uh" // comment\n#strictbraces "true"\nvar after_directive = 1;');
+    for (const [line, text] of [[0, '# game'], [1, '# '], [2, '#\tline'], [3, '# include'], [4, '#strictbraces']]) {
+        scopeAt(lines, line, text, 'keyword.control.directive.usecode');
+    }
+    scopeAt(lines, 1, '42', 'constant.numeric.integer.usecode');
+    scopeAt(lines, 2, '23', 'constant.numeric.integer.usecode');
+    scopeAt(lines, 3, 'path/file.uh', 'string.quoted.double.usecode');
+    scopeAt(lines, 3, '// comment', 'comment.line.double-slash.usecode');
+    scopeAt(lines, 4, 'true', 'constant.language.boolean.usecode');
+    scopeAt(lines, 5, 'after_directive', 'variable.other.usecode');
+});
+
+test('directive lines do not leak comments or string state into following source', () => {
+    const lines = tokenize('#include "file.uh" /* ignored tail\nvar normal = 1;\n#unknown "unterminated\nvar following = 1;\n#game "unterminated\nvar final_value = 1;');
+    for (const [line, name] of [[1, 'normal'], [3, 'following'], [5, 'final_value']]) scopeAt(lines, line, name, 'variable.other.usecode');
+});
+
+test('autonumber uses C-base numbers while source integers are decimal or hexadecimal', () => {
+    for (const [literal, scope] of [['123', 'integer'], ['0Xc00', 'hex'], ['0xc00', 'hex'], ['01400', 'octal']]) {
+        scopeAt(tokenize('# autonumber ' + literal), 0, literal, `constant.numeric.${scope}.usecode`);
+    }
+    scopeAt(tokenize('#autonumber 08'), 0, '08', 'invalid.illegal.numeric.usecode');
+    scopeAt(tokenize('var x = 01400;'), 0, '01400', 'constant.numeric.integer.usecode');
+});
+
+test('hexadecimal literals accept either x case and malformed integers are single invalid tokens', () => {
+    for (const literal of ['0XDEAD', '0xdead', '0X0', '0xFFFFFFFF']) scopeAt(tokenize(literal), 0, literal, 'constant.numeric.hex.usecode');
+    for (const literal of ['0x12G', '0X', '0x', '123abc', '0b101', '0x12_G']) {
+        const lines = tokenize(literal);
+        scopeAt(lines, 0, literal, 'invalid.illegal.numeric.usecode');
+        assert.equal(lines[0].tokens.length, 1);
+        assert.equal(lines[0].tokens[0].endIndex, literal.length);
+    }
+    scopeAt(tokenize('foo0xAB'), 0, 'foo0xAB', 'variable.other.usecode');
+    scopeAt(tokenize('"0x12G" // 0XDEAD'), 0, '0x12G', 'string.quoted.double.usecode');
+});
