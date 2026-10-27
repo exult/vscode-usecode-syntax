@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.10] - 2026-10-27
+
+### Added (0.1.10)
+
+- TypeScript document formatter based on `format_usecode.py`, with token-preserving whitespace edits, configurable line width, and editor indentation and line-ending support
+- Formatter regression tests and automatic TypeScript builds during packaging
+
 ## [0.1.9] - 2026-10-27
 
 ### Fixed (0.1.9)

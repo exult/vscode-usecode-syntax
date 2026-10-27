@@ -1,8 +1,8 @@
 {
     "name": "usecode-syntax",
     "displayName": "Exult Usecode Syntax",
-    "description": "Syntax highlighting for Exult's UseCode C (UCC) files (.ucc/.uc/.uh), UseCode eXTracted files (.ucxt), and UseCode Assembly files (.uca).",
-    "version": "0.1.9",
+    "description": "Syntax highlighting and formatting for Exult's UseCode C (UCC), with highlighting for UseCode eXTracted and UseCode Assembly files.",
+    "version": "0.1.10",
     "publisher": "Exult",
     "license": "GPL-2.0-or-later",
     "icon": "images/icon.png",
@@ -24,15 +24,34 @@
     "engines": {
         "vscode": "^1.60.0"
     },
+    "main": "./out/extension.js",
+    "activationEvents": [
+        "onLanguage:usecode"
+    ],
     "scripts": {
-        "test": "node --test tests/*.test.cjs",
+        "compile": "tsc -p .",
+        "test": "npm run compile && node --test tests/*.test.cjs",
+        "vscode:prepublish": "npm run compile",
         "package": "vsce package",
         "package:list": "vsce ls"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Formatters"
     ],
     "contributes": {
+        "configuration": {
+            "title": "Usecode",
+            "properties": {
+                "usecode.format.maxLineLength": {
+                    "type": "integer",
+                    "default": 100,
+                    "minimum": 40,
+                    "scope": "resource",
+                    "description": "Preferred line width when formatting Usecode. Atomic strings, comments, and function identity declarations can exceed this width."
+                }
+            }
+        },
         "languages": [
             {
                 "id": "usecode",
@@ -84,7 +103,9 @@
         ]
     },
     "devDependencies": {
+        "@types/vscode": "1.60.0",
         "@vscode/vsce": "4.0.0",
+        "typescript": "7.0.2",
         "vscode-oniguruma": "2.0.1",
         "vscode-textmate": "9.3.2"
     }
