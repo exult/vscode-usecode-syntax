@@ -349,55 +349,55 @@
             "patterns": [
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:get_random|execute_usecode_array|delayed_execute_usecode_array|show_npc_face|remove_npc_face|show_npc_face0|show_npc_face1|remove_npc_face0|remove_npc_face1|add_answer|remove_answer|push_answers|pop_answers|clear_answers|select_from_menu|select_from_menu2|input_numeric_value|set_item_shape|find_nearest|play_sound_effect|die_roll)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:get_random|execute_usecode_array|delayed_execute_usecode_array|show_npc_face|remove_npc_face|show_npc_face0|show_npc_face1|remove_npc_face0|remove_npc_face1|add_answer|remove_answer|push_answers|pop_answers|clear_answers|select_from_menu|select_from_menu2|input_numeric_value|set_item_shape|find_nearest|play_sound_effect|die_roll)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:get_item_shape|get_item_weight|get_item_frame|set_item_frame|get_item_quality|set_item_quality|get_item_quantity|set_item_quantity|get_object_position|get_distance|find_direction|get_npc_object|get_schedule_type|set_schedule_type|add_to_party|remove_from_party|get_npc_prop|set_npc_prop|get_avatar_ref|get_party_list|get_party_list2)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:get_item_shape|get_item_weight|get_item_frame|set_item_frame|get_item_quality|set_item_quality|get_item_quantity|set_item_quantity|get_object_position|get_distance|find_direction|get_npc_object|get_schedule_type|set_schedule_type|add_to_party|remove_from_party|get_npc_prop|set_npc_prop|get_avatar_ref|get_party_list|get_party_list2)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:create_new_object|create_new_object2|set_last_created|update_last_created|get_npc_name|count_objects|find_object|get_cont_items|remove_party_items|add_party_items|add_cont_items|remove_cont_items|get_music_track|play_music)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:create_new_object|create_new_object2|set_last_created|update_last_created|get_npc_name|count_objects|find_object|get_cont_items|remove_party_items|add_party_items|add_cont_items|remove_cont_items|get_music_track|play_music)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:npc_nearby|npc_nearby2|find_nearby_avatar|is_npc|display_runes|click_on_item|error_message|find_nearby|give_last_created|is_dead|game_hour|game_minute|get_npc_number|get_npc_id|set_npc_id|part_of_day|get_alignment|set_alignment)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:npc_nearby|npc_nearby2|find_nearby_avatar|is_npc|display_runes|click_on_item|error_message|find_nearby|give_last_created|is_dead|game_hour|game_minute|get_npc_number|get_npc_id|set_npc_id|part_of_day|get_alignment|set_alignment)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:move_object|remove_npc|item_say|clear_item_say|set_to_attack|get_lift|set_lift|get_weather|set_weather|sit_down|summon|display_map|si_display_map|kill_npc|roll_to_win|set_attack_mode|get_attack_mode|set_oppressor|get_oppressor|clone|display_area|wizard_eye)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:move_object|remove_npc|item_say|clear_item_say|set_to_attack|get_lift|set_lift|get_weather|set_weather|sit_down|summon|display_map|si_display_map|kill_npc|roll_to_win|set_attack_mode|get_attack_mode|set_oppressor|get_oppressor|clone|display_area|wizard_eye)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:resurrect|resurrect_npc|add_spell|remove_all_spells|sprite_effect|attack_object|book_mode|book_mode_ex|stop_time|cause_light|get_barge|create_barge_object|earthquake|is_pc_female|armageddon|halt_scheduled|lightning|get_array_size)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:resurrect|resurrect_npc|add_spell|remove_all_spells|sprite_effect|attack_object|book_mode|book_mode_ex|stop_time|cause_light|get_barge|create_barge_object|earthquake|is_pc_female|armageddon|halt_scheduled|lightning|get_array_size)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:mark_virtue_stone|recall_virtue_stone|apply_damage|is_pc_inside|set_orrery|get_timer|set_timer|wearing_fellowship|mouse_exists|get_speech_track|flash_mouse|get_item_frame_rot|set_item_frame_rot|on_barge|get_container|remove_item|reduce_health|is_readied|restart_game|start_speech|run_endgame|fire_projectile|nap_time|advance_time)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:mark_virtue_stone|recall_virtue_stone|apply_damage|is_pc_inside|set_orrery|get_timer|set_timer|wearing_fellowship|mouse_exists|get_speech_track|flash_mouse|get_item_frame_rot|set_item_frame_rot|on_barge|get_container|remove_item|reduce_health|is_readied|restart_game|start_speech|run_endgame|fire_projectile|nap_time|advance_time)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:in_usecode|in_usecode_path|call_guards|obj_sprite_effect|attack_avatar|path_run_usecode|si_path_run_usecode|close_gumps|close_gumps2|close_gump|close_gump2|in_gump_mode|set_light|set_time_palette|is_not_blocked|play_sound_effect2|direction_from|get_item_flag|set_item_flag|clear_item_flag)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:in_usecode|in_usecode_path|call_guards|obj_sprite_effect|attack_avatar|path_run_usecode|si_path_run_usecode|close_gumps|close_gumps2|close_gump|close_gump2|in_gump_mode|set_light|set_time_palette|is_not_blocked|play_sound_effect2|direction_from|get_item_flag|set_item_flag|clear_item_flag)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:set_path_failure|fade_palette|fade_palette_sleep|in_combat|start_blocking_speech|is_water|reset_conv_face|set_camera|get_dead_party|view_tile|telekenesis|a_or_an|get_item_weight|get_temperature|set_temperature|get_temperature_zone|get_npc_warmth|has_spell|remove_spell|get_skin_colour|change_npc_face0|change_npc_face1)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:set_path_failure|fade_palette|fade_palette_sleep|in_combat|start_blocking_speech|is_water|reset_conv_face|set_camera|get_dead_party|view_tile|telekenesis|a_or_an|get_item_weight|get_temperature|set_temperature|get_temperature_zone|get_npc_warmth|has_spell|remove_spell|get_skin_colour|change_npc_face0|change_npc_face1)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:set_conversation_slot|set_npc_name|set_usecode_fun|get_usecode_fun|get_map_num|save_pos|teleport_to_saved_pos|set_polymorph|set_intercept_item|printf|remove_from_keyring|is_on_keyring|add_to_keyring|remove_from_area|set_new_schedules|set_opponent|set_barge_dir|modify_schedule|revert_schedule|run_schedule|begin_casting_mode|init_conversation|end_conversation)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:set_conversation_slot|set_npc_name|set_usecode_fun|get_usecode_fun|get_map_num|save_pos|teleport_to_saved_pos|set_polymorph|set_intercept_item|printf|remove_from_keyring|is_on_keyring|add_to_keyring|remove_from_area|set_new_schedules|set_opponent|set_barge_dir|modify_schedule|revert_schedule|run_schedule|begin_casting_mode|init_conversation|end_conversation)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:ambient_light|approach_avatar|can_avatar_reach_pos|center_view|create_new_egg|display_map_ex|game_day|get_body_npc|get_item_gump_position|get_readied|get_shape_flag|get_slider_value|get_weapon|infravision|init_reset_conv_face|is_dest_reachable|play_scene|set_gump_shape|set_gump_text|set_gump_text_font|set_item_gump_position|set_slider_value|stop_arresting)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:ambient_light|approach_avatar|can_avatar_reach_pos|center_view|create_new_egg|display_map_ex|game_day|get_body_npc|get_item_gump_position|get_readied|get_shape_flag|get_slider_value|get_weapon|infravision|is_dest_reachable|sib_is_dest_reachable|sib_path_run_usecode|play_scene|set_gump_shape|set_gump_text|set_gump_text_font|set_item_gump_position|set_slider_value|stop_arresting)\\b"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\bUI_UNKNOWN_[0-9A-Fa-f]{2}\\b(?=\\s*\\()"
+                    "match": "\\bUI_UNKNOWN_0*[0-9A-Fa-f]{1,4}\\b"
                 },
                 {
                     "name": "invalid.illegal.intrinsic.usecode",
-                    "match": "\\bUI_[A-Za-z_][A-Za-z0-9_]*\\b"
+                    "match": "\\b(?:UNKNOWN|UI_[A-Za-z0-9_]*)\\b"
                 }
             ]
         },

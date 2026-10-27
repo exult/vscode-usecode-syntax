@@ -25,6 +25,7 @@
         "vscode": "^1.60.0"
     },
     "scripts": {
+        "test": "node --test tests/*.test.cjs",
         "package": "vsce package",
         "package:list": "vsce ls"
     },
@@ -83,6 +84,8 @@
         ]
     },
     "devDependencies": {
-        "@vscode/vsce": "4.0.0"
+        "@vscode/vsce": "4.0.0",
+        "vscode-oniguruma": "2.0.1",
+        "vscode-textmate": "9.3.2"
     }
 }

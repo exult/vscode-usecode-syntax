@@ -65,6 +65,8 @@ Contributions are welcome. Please open an issue or pull request on the repositor
 - Keep grammar changes minimal and documented
 - Include sample snippets or test cases for any new rules
 
+Run `npm test` to check highlighting with VS Code's TextMate and Oniguruma engines. Set `EXULT_ROOT` to an Exult checkout to also check intrinsic coverage against all three engine tables.
+
 ## Contact and repository
 
 Please add repository information in `package.json` (repository, bugs, homepage) so the Marketplace page links to the source. Replace placeholders with your repository URL before publishing.
