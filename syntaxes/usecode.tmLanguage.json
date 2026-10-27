@@ -215,15 +215,8 @@
                     "match": "\\buser_choice\\b"
                 },
                 {
-                    "match": "(\\b(?:break|continue)\\b)(?:\\s+([A-Za-z_][A-Za-z0-9_]*))?",
-                    "captures": {
-                        "1": { "name": "keyword.control.flow.usecode" },
-                        "2": { "name": "entity.name.label.usecode" }
-                    }
-                },
-                {
                     "name": "keyword.control.flow.usecode",
-                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
+                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|default|fallthrough|try|catch|throw|abort|forever|breakable|break|continue)\\b"
                 },
                 {
                     "name": "storage.type.usecode",
@@ -270,14 +263,29 @@
         "labels": {
             "patterns": [
                 {
-                    "match": "(\\b(?:goto|attend)\\b)\\s+([A-Za-z_][A-Za-z0-9_]*)",
-                    "captures": {
-                        "1": { "name": "keyword.other.goto-type.usecode" },
-                        "2": { "name": "entity.name.label.usecode" }
-                    }
+                    "begin": "\\b(?:goto|attend)\\b",
+                    "beginCaptures": {
+                        "0": { "name": "keyword.other.goto-type.usecode" }
+                    },
+                    "end": "\\b[A-Za-z_][A-Za-z0-9_]*\\b|(?=[;{}:])",
+                    "endCaptures": {
+                        "0": { "name": "entity.name.label.usecode" }
+                    },
+                    "patterns": [{ "include": "#comments" }]
                 },
                 {
-                    "match": "(?:^|[\\{\\}\\;]|:)\\s*((?!(?:always|default)\\b)[A-Za-z_][A-Za-z0-9_]*)\\s*(:)(?!:)",
+                    "begin": "\\b(?:break|continue)\\b",
+                    "beginCaptures": {
+                        "0": { "name": "keyword.control.flow.usecode" }
+                    },
+                    "end": "\\b[A-Za-z_][A-Za-z0-9_]*\\b|(?=[;{}:])",
+                    "endCaptures": {
+                        "0": { "name": "entity.name.label.usecode" }
+                    },
+                    "patterns": [{ "include": "#comments" }]
+                },
+                {
+                    "match": "(?:^|(?<=[{};:)]))\\s*((?!(?:always|default|converse|case)\\b)[A-Za-z_][A-Za-z0-9_]*)\\s*(:)(?!:)",
                     "captures": {
                         "1": { "name": "entity.name.label.usecode" },
                         "2": { "name": "keyword.operator.usecode" }

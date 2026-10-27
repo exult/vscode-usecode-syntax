@@ -101,3 +101,29 @@ test('only the contiguous .original suffix is special', () => {
     scopeAt(lines, 4, 'original', 'entity.name.function.usecode');
     scopeAt(lines, 5, 'originally', 'entity.name.function.usecode');
 });
+
+test('labels preserve punctuation and support consecutive and nested statements', () => {
+    const lines = tokenize('{ first: second: goto first; } third: ;\nif (true) fourth: ;\nclass Derived : Base {}\nconverse:nested(0) {}\nalways: default:');
+    for (const name of ['first', 'second', 'third']) scopeAt(lines, 0, name, 'entity.name.label.usecode');
+    scopeAt(lines, 0, '{', 'punctuation.section.block.begin.bracket.curly.usecode');
+    scopeAt(lines, 0, ';', 'keyword.operator.usecode');
+    scopeAt(lines, 0, '}', 'punctuation.section.block.end.bracket.curly.usecode');
+    scopeAt(lines, 1, 'fourth', 'entity.name.label.usecode');
+    scopeAt(lines, 2, 'Derived', 'variable.other.usecode');
+    scopeAt(lines, 3, 'converse', 'keyword.control.flow.usecode');
+    scopeAt(lines, 3, 'nested', 'storage.type.declaration.usecode');
+    scopeAt(lines, 4, 'always', 'keyword.control.flow.usecode');
+    scopeAt(lines, 4, 'default', 'keyword.control.flow.usecode');
+});
+
+test('label references tolerate comments and line breaks', () => {
+    for (const keyword of ['goto', 'attend', 'break', 'continue']) {
+        const lines = tokenize(`${keyword} /* comment\ncontinued */\ntarget;\nvar following = 1;`);
+        scopeAt(lines, 0, keyword, keyword === 'goto' || keyword === 'attend' ? 'keyword.other.goto-type.usecode' : 'keyword.control.flow.usecode');
+        scopeAt(lines, 2, 'target', 'entity.name.label.usecode');
+        scopeAt(lines, 3, 'following', 'variable.other.usecode');
+    }
+    const lines = tokenize('break; continue; var value = 1;');
+    scopeAt(lines, 0, ';', 'keyword.operator.usecode');
+    scopeAt(lines, 0, 'value', 'variable.other.usecode');
+});
